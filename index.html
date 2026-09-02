@@ -1,92 +1,326 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>7HEAVEN MARKETING BUSINESS</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#06152b;color:#fff}
-a{text-decoration:none;color:inherit}
-.hero{min-height:100vh;background:#06152b url("poster.png") center top/cover no-repeat;position:relative}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,10,30,.08),rgba(0,10,30,.7))}
-.hero-content{position:relative;z-index:2;min-height:100vh;display:flex;align-items:flex-end;justify-content:center;padding:28px 18px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.btn{padding:14px 22px;border-radius:30px;font-weight:800;border:2px solid #ffd21c;background:#082b59;box-shadow:0 5px 18px #0008}
-.btn.gold{background:#ffd21c;color:#07172d}
-.products{padding:55px 18px 80px;background:linear-gradient(180deg,#071a36,#031024)}
-.title{text-align:center;font-size:34px;margin:0 0 10px;color:#ffd21c}
-.sub{text-align:center;color:#dce8f5;margin:0 auto 35px;max-width:700px}
-.grid{max-width:1050px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:#0b2c58;border:1px solid #ffd21c66;border-radius:18px;padding:25px;box-shadow:0 10px 25px #0006}
-.card h3{margin:0 0 10px;color:#ffd21c;font-size:22px}.card p{line-height:1.5;color:#e8f1fb}
-.card .small{display:inline-block;margin-top:8px;color:#fff;background:#123f77;padding:9px 14px;border-radius:20px}
-.contact{text-align:center;padding:35px 18px;background:#020b19}
-.contact h2{color:#ffd21c}.contact-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.float{position:fixed;right:18px;bottom:18px;z-index:10;display:flex;gap:10px}
-.float a{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:25px;font-weight:bold;background:#25D366;box-shadow:0 5px 18px #0008}
-.float a.call{background:#ffd21c;color:#07172d}
-@media(max-width:600px){.title{font-size:28px}.hero{min-height:82vh}.hero-content{min-height:82vh}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Heaven Business - Electronics & Home Appliances</title>
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --dark-color: #212529;
+            --light-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .lang-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .lang-btn:hover {
+            background-color: #0b5ed7;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(13, 110, 253, 0.85), rgba(0, 0, 0, 0.75)), url('poster.png') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            display: block;
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .badge {
+            align-self: flex-start;
+            background-color: #e7f1ff;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .btn-buy {
+            display: block;
+            text-align: center;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-buy:hover {
+            background-color: #128c7e;
+        }
+
+        footer {
+            background-color: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="actions">
-      <a class="btn gold" href="#products">VIEW PRODUCTS & DETAILS</a>
-      <a class="btn" href="https://wa.me/19406178262" target="_blank" rel="noopener">WHATSAPP</a>
-      <a class="btn" href="tel:+211921444448">CALL US</a>
+    <header>
+        <div class="logo">7Heaven Business</div>
+        <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">English</button>
+    </header>
+
+    <section class="hero">
+        <h1 id="heroTitle">أحدث الأجهزة الإلكترونية والمنزلية</h1>
+        <p id="heroDesc">نوفر لكم أجهزة Starlink الفضائية، التلفزيونات الذكية، ومستلزمات المنزل بأفضل الأسعار والجودة.</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title" id="sectionTitle">منتجاتنا المميزة</h2>
+        
+        <div class="grid">
+            
+            <!-- Starlink Mini -->
+            <div class="card">
+                <span class="badge" id="badge1">إنترنت فضائي محمول</span>
+                <img src="poster.png" alt="Starlink Mini" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Starlink Mini</h3>
+                    <p class="card-desc" id="desc1">جهاز إنترنت فضائي مصغر وعالي السرعة، مثالي للرحلات والمناطق النائية.</p>
+                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Starlink%20Mini" class="btn-buy" id="btn1" target="_blank">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- Starlink Gen 3 -->
+            <div class="card">
+                <span class="badge" id="badge2">إنترنت فضائي عالي السرعة</span>
+                <img src="poster.png" alt="Starlink Gen 3" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Starlink Gen 3 (Standard)</h3>
+                    <p class="card-desc" id="desc2">الجيل الثالث الأحدث والأقوى لتغطية منازل ومكاتب بسرعات فائقة.</p>
+                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Starlink%20Gen%203" class="btn-buy" id="btn2" target="_blank">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- Smart TVs -->
+            <div class="card">
+                <span class="badge" id="badge3">شاشات تلفزيون</span>
+                <img src="poster.png" alt="Smart TV" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title" id="title3">تلفزيونات سمارت 4K</h3>
+                    <p class="card-desc" id="desc3">تلفزيونات ذكية بمقاسات مختلفة (43, 55, 65 بوصة) مع دقة صورة عالية.</p>
+                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Smart%20TVs" class="btn-buy" id="btn3" target="_blank">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+            <!-- Home Appliances -->
+            <div class="card">
+                <span class="badge" id="badge4">أجهزة منزلية</span>
+                <img src="poster.png" alt="Home Appliances" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title" id="title4">أجهزة ومستلزمات منزلية</h3>
+                    <p class="card-desc" id="desc4">تشكيلة واسعة من الأجهزة الكهربائية والمنزلية الضرورية لراحة بيتك.</p>
+                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Home%20Appliances" class="btn-buy" id="btn4" target="_blank">اطلب عبر واتساب</a>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </div>
-</section>
 
-<section class="products" id="products">
-  <h1 class="title">OUR PRODUCTS & SERVICES</h1>
-  <p class="sub">Tap any item below to view its details or contact 7HEAVEN MARKETING BUSINESS directly.</p>
-  <div class="grid">
-    <article class="card">
-      <h3>⭐ Starlink</h3>
-      <p>Starlink equipment, installation, setup and high-speed internet solutions.</p>
-      <a class="small" href="https://wa.me/19406178262?text=Hello%207HEAVEN%2C%20I%20need%20Starlink%20details" target="_blank" rel="noopener">Ask on WhatsApp</a>
-    </article>
-    <article class="card">
-      <h3>📺 Smart TVs</h3>
-      <p>Smart TV supply guidance, installation and wall mounting services.</p>
-      <a class="small" href="https://wa.me/19406178262?text=Hello%207HEAVEN%2C%20I%20need%20Smart%20TV%20details" target="_blank" rel="noopener">Ask on WhatsApp</a>
-    </article>
-    <article class="card">
-      <h3>📡 Satellite TV / Dish</h3>
-      <p>Dish installation, alignment and satellite TV setup for supported services.</p>
-      <a class="small" href="https://wa.me/19406178262?text=Hello%207HEAVEN%2C%20I%20need%20dish%20installation%20details" target="_blank" rel="noopener">Ask on WhatsApp</a>
-    </article>
-    <article class="card">
-      <h3>📶 IPTV & BeIN Sports</h3>
-      <p>IPTV and supported sports/TV service setup and installation assistance.</p>
-      <a class="small" href="https://wa.me/19406178262?text=Hello%207HEAVEN%2C%20I%20need%20IPTV%20and%20BeIN%20Sports%20details" target="_blank" rel="noopener">Ask on WhatsApp</a>
-    </article>
-    <article class="card">
-      <h3>🔧 Electronic Services</h3>
-      <p>General electronic installation and technical service support.</p>
-      <a class="small" href="https://wa.me/19406178262?text=Hello%207HEAVEN%2C%20I%20need%20electronic%20service%20details" target="_blank" rel="noopener">Ask on WhatsApp</a>
-    </article>
-  </div>
-</section>
+    <footer>
+        <p>&copy; 2026 7Heaven Business - All Rights Reserved</p>
+    </footer>
 
-<section class="contact">
-  <h2>CONTACT 7HEAVEN</h2>
-  <div class="contact-row">
-    <a class="btn gold" href="https://wa.me/19406178262" target="_blank" rel="noopener">WhatsApp: +1 940 617 8262</a>
-    <a class="btn" href="tel:+211921444448">Call: 0921 444 448</a>
-    <a class="btn" href="tel:+211980033007">Call: 0980 033 007</a>
-  </div>
-  <p>Juba, Mallaki, Custom</p>
-</section>
+    <script>
+        let currentLang = 'ar';
 
-<div class="float">
-  <a href="https://wa.me/19406178262" target="_blank" rel="noopener" aria-label="WhatsApp">W</a>
-  <a class="call" href="tel:+211921444448" aria-label="Call">☎</a>
-</div>
+        const translations = {
+            ar: {
+                langBtn: "English",
+                heroTitle: "أحدث الأجهزة الإلكترونية والمنزلية",
+                heroDesc: "نوفر لكم أجهزة Starlink الفضائية، التلفزيونات الذكية، ومستلزمات المنزل بأفضل الأسعار والجودة.",
+                sectionTitle: "منتجاتنا المميزة",
+                badge1: "إنترنت فضائي محمول",
+                desc1: "جهاز إنترنت فضائي مصغر وعالي السرعة، مثالي للرحلات والمناطق النائية.",
+                badge2: "إنترنت فضائي عالي السرعة",
+                desc2: "الجيل الثالث الأحدث والأقوى لتغطية منازل ومكاتب بسرعات فائقة.",
+                badge3: "شاشات تلفزيون",
+                title3: "تلفزيونات سمارت 4K",
+                desc3: "تلفزيونات ذكية بمقاسات مختلفة (43, 55, 65 بوصة) مع دقة صورة عالية.",
+                badge4: "أجهزة منزلية",
+                title4: "أجهزة ومستلزمات منزلية",
+                desc4: "تشكيلة واسعة من الأجهزة الكهربائية والمنزلية الضرورية لراحة بيتك.",
+                btnText: "اطلب عبر واتساب"
+            },
+            en: {
+                langBtn: "عربي",
+                heroTitle: "Latest Electronics & Home Appliances",
+                heroDesc: "Providing Starlink satellite kits, Smart TVs, and home appliances with top quality and best prices.",
+                sectionTitle: "Featured Products",
+                badge1: "Portable Satellite Internet",
+                desc1: "Compact and high-speed satellite internet, ideal for travel and remote areas.",
+                badge2: "High-Speed Satellite Internet",
+                desc2: "The latest 3rd Gen edition built for extreme internet speeds for homes and offices.",
+                badge3: "TV Screens",
+                title3: "4K Smart TVs",
+                desc3: "Smart televisions in various sizes (43, 55, 65 inches) with high display resolution.",
+                badge4: "Appliances",
+                title4: "Home Electronics & Appliances",
+                desc4: "Wide collection of daily essential electrical and home appliances.",
+                btnText: "Order via WhatsApp"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            const t = translations[currentLang];
+            
+            document.getElementById('langToggle').innerText = t.langBtn;
+            document.getElementById('heroTitle').innerText = t.heroTitle;
+            document.getElementById('heroDesc').innerText = t.heroDesc;
+            document.getElementById('sectionTitle').innerText = t.sectionTitle;
+            
+            document.getElementById('badge1').innerText = t.badge1;
+            document.getElementById('desc1').innerText = t.desc1;
+            document.getElementById('badge2').innerText = t.badge2;
+            document.getElementById('desc2').innerText = t.desc2;
+            
+            document.getElementById('badge3').innerText = t.badge3;
+            document.getElementById('title3').innerText = t.title3;
+            document.getElementById('desc3').innerText = t.desc3;
+
+            document.getElementById('badge4').innerText = t.badge4;
+            document.getElementById('title4').innerText = t.title4;
+            document.getElementById('desc4').innerText = t.desc4;
+
+            for(let i=1; i<=4; i++) {
+                document.getElementById('btn' + i).innerText = t.btnText;
+            }
+        }
+    </script>
 
 </body>
 </html>
