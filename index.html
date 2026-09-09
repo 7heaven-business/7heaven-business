@@ -3,360 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Heaven Business - Electronics & Home Appliances</title>
+    <title>7heaven Business - حلول الشبكات والاتصالات الفضائية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root {
             --primary-color: #0d6efd;
-            --dark-color: #212529;
-            --light-bg: #f8f9fa;
-            --border-color: #e0e0e0;
+            --secondary-color: #0f172a;
+            --accent-color: #38bdf8;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-radius: 16px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-bg);
-            color: var(--dark-color);
-            line-height: 1.6;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
 
         header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
-            z-index: 100;
-            padding: 1rem 2rem;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .lang-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .lang-btn:hover {
-            background-color: #0b5ed7;
-        }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--accent-color); display: flex; align-items: center; gap: 10px; }
+        nav a { color: #f1f5f9; text-decoration: none; margin-right: 1.5rem; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-color); }
 
         .hero {
-            background: linear-gradient(rgba(13, 110, 253, 0.85), rgba(0, 0, 0, 0.75)), url('poster.png') center/cover no-repeat;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
+            padding: 5rem 2rem;
             text-align: center;
-            padding: 4rem 1rem;
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; color: #94a3b8; max-width: 700px; margin: 0 auto 2rem; }
 
-        .hero p {
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(45deg, #0d6efd, #38bdf8);
+            color: white;
+            padding: 0.85rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
             font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+            transition: transform 0.3s;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+        .btn-cta:hover { transform: translateY(-3px); }
 
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.2rem; color: var(--secondary-color); margin-bottom: 0.5rem; }
+        .section-title p { color: var(--text-muted); font-size: 1.1rem; }
 
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
-            display: block;
-            margin: 8px auto 0 auto;
-            border-radius: 2px;
-        }
-
-        .grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
-        .card {
-            background: white;
-            border-radius: 12px;
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
+        .product-card:hover { transform: translateY(-8px); }
 
-        .card-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background-color: #eee;
-        }
-
-        .card-body {
-            padding: 1.5rem;
+        .product-img-wrapper {
+            height: 240px;
+            background-color: #ffffff;
             display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
         }
 
-        .card-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+        .product-img-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
-        .card-desc {
-            color: #6c757d;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
+        .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-tag { align-self: flex-start; background: #e0f2fe; color: #0284c7; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .product-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--secondary-color); }
+        .product-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
-        .badge {
-            align-self: flex-start;
-            background-color: #e7f1ff;
-            color: var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .btn-buy {
+        .btn-order {
             display: block;
             text-align: center;
-            background-color: #25d366;
+            background-color: var(--secondary-color);
             color: white;
+            padding: 0.7rem;
+            border-radius: 10px;
             text-decoration: none;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s ease;
+            font-weight: 600;
+            transition: background 0.3s;
         }
 
-        .btn-buy:hover {
-            background-color: #128c7e;
-        }
+        .btn-order:hover { background-color: var(--primary-color); }
 
-        footer {
-            background-color: #111;
-            color: #aaa;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-        }
+        footer { background-color: var(--secondary-color); color: #94a3b8; padding: 3rem 2rem 1.5rem; text-align: center; margin-top: 5rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">7Heaven Business</div>
-        <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">English</button>
+        <div class="logo"><i class="fa-solid fa-network-wired"></i> 7heaven Business</div>
+        <nav>
+            <a href="#products">المنتجات</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
     </header>
 
     <section class="hero">
-        <h1 id="heroTitle">أحدث الأجهزة الإلكترونية والمنزلية</h1>
-        <p id="heroDesc">نوفر لكم أجهزة Starlink الفضائية، التلفزيونات الذكية، ومستلزمات المنزل بأفضل الأسعار والجودة.</p>
+        <h1>حلول الشبكات والإنترنت الفضائي المتقدمة</h1>
+        <p>نوفر أحدث أجهزة Starlink و Ruijie Reyee و MikroTik لضمان اتصال سريع واستقرار تام لمشروعك.</p>
+        <a href="https://wa.me/" class="btn-cta"><i class="fa-brands fa-whatsapp"></i> اطلب استشارتك الآن</a>
     </section>
 
     <div class="container">
-        <h2 class="section-title" id="sectionTitle">منتجاتنا المميزة</h2>
-        
-        <div class="grid">
-            
-            <!-- Starlink Mini -->
-            <div class="card">
-                <span class="badge" id="badge1">إنترنت فضائي محمول</span>
-                <img src="poster.png" alt="Starlink Mini" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Starlink Mini</h3>
-                    <p class="card-desc" id="desc1">جهاز إنترنت فضائي مصغر وعالي السرعة، مثالي للرحلات والمناطق النائية.</p>
-                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Starlink%20Mini" class="btn-buy" id="btn1" target="_blank">اطلب عبر واتساب</a>
-                </div>
+        <section id="products">
+            <div class="section-title">
+                <h2>منتجاتنا المعتمدة</h2>
+                <p>معدات وأجهزة عالية الكفاءة لتغطية كافة احتياجات الشبكات</p>
             </div>
 
-            <!-- Starlink Gen 3 -->
-            <div class="card">
-                <span class="badge" id="badge2">إنترنت فضائي عالي السرعة</span>
-                <img src="poster.png" alt="Starlink Gen 3" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Starlink Gen 3 (Standard)</h3>
-                    <p class="card-desc" id="desc2">الجيل الثالث الأحدث والأقوى لتغطية منازل ومكاتب بسرعات فائقة.</p>
-                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Starlink%20Gen%203" class="btn-buy" id="btn2" target="_blank">اطلب عبر واتساب</a>
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="90205.jpg.jpeg" alt="Starlink Satellite Dish">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag">إنترنت فضائي</span>
+                        <h3>أجهزة Starlink الجيل الجديد</h3>
+                        <p>إنترنت فضائي عالي السرعة وتغطية شاملة في أصعب المناطق والمواقع النائية.</p>
+                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Smart TVs -->
-            <div class="card">
-                <span class="badge" id="badge3">شاشات تلفزيون</span>
-                <img src="poster.png" alt="Smart TV" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title" id="title3">تلفزيونات سمارت 4K</h3>
-                    <p class="card-desc" id="desc3">تلفزيونات ذكية بمقاسات مختلفة (43, 55, 65 بوصة) مع دقة صورة عالية.</p>
-                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Smart%20TVs" class="btn-buy" id="btn3" target="_blank">اطلب عبر واتساب</a>
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="90221.jpg.png" alt="Ruijie Reyee WiFi 6">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag">WiFi 6</span>
+                        <h3>نقاط بث Ruijie Reyee WiFi 6</h3>
+                        <p>تغطية لاسلكية فائقة السرعة مع دعم كثافة عالية من المستخدمين دون انقطاع.</p>
+                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Home Appliances -->
-            <div class="card">
-                <span class="badge" id="badge4">أجهزة منزلية</span>
-                <img src="poster.png" alt="Home Appliances" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title" id="title4">أجهزة ومستلزمات منزلية</h3>
-                    <p class="card-desc" id="desc4">تشكيلة واسعة من الأجهزة الكهربائية والمنزلية الضرورية لراحة بيتك.</p>
-                    <a href="https://wa.me/?text=Hello,%20I%20want%20to%20inquire%20about%20Home%20Appliances" class="btn-buy" id="btn4" target="_blank">اطلب عبر واتساب</a>
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="90216.jpg.jpeg" alt="MikroTik Router">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag">إدارة الشبكات</span>
+                        <h3>راوترات وتوزيع MikroTik</h3>
+                        <p>حلول احترافية لإدارة السرعات، التحكم بالشبكة، وتوزيع الإنترنت بكفاءة عالية.</p>
+                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="90225.jpg.jpeg" alt="Ruijie Reyee PoE Switch">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag">مفاتيح شبكة PoE</span>
+                        <h3>سويتشات Ruijie Reyee PoE</h3>
+                        <p>تغذية الأجهزة بكابل واحد مع نقل بيانات عالي السرعة واستقرار ممتاز.</p>
+                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="90223.jpg.png" alt="Ruijie Reyee PtP Dish">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag">ربط لاسلكي</span>
+                        <h3>محطات الربط Point-to-Point</h3>
+                        <p>ربط المواقع والفروع البعيدة لاسلكياً بمسافات طويلة وسرعات عالية جداً.</p>
+                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="90214.jpg.png" alt="Wavlink Outdoor Router">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag">أجهزة خارجية</span>
+                        <h3>راوترات Wavlink الخارجية 4G/WiFi</h3>
+                        <p>مقاومة للظروف الجوية الصعبة لتوفير تغطية خارجية ممتازة للمواقع المفتوحة.</p>
+                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     </div>
 
-    <footer>
-        <p>&copy; 2026 7Heaven Business - All Rights Reserved</p>
+    <footer id="contact">
+        <p>&copy; 2026 7heaven Business. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <script>
-        let currentLang = 'ar';
-
-        const translations = {
-            ar: {
-                langBtn: "English",
-                heroTitle: "أحدث الأجهزة الإلكترونية والمنزلية",
-                heroDesc: "نوفر لكم أجهزة Starlink الفضائية، التلفزيونات الذكية، ومستلزمات المنزل بأفضل الأسعار والجودة.",
-                sectionTitle: "منتجاتنا المميزة",
-                badge1: "إنترنت فضائي محمول",
-                desc1: "جهاز إنترنت فضائي مصغر وعالي السرعة، مثالي للرحلات والمناطق النائية.",
-                badge2: "إنترنت فضائي عالي السرعة",
-                desc2: "الجيل الثالث الأحدث والأقوى لتغطية منازل ومكاتب بسرعات فائقة.",
-                badge3: "شاشات تلفزيون",
-                title3: "تلفزيونات سمارت 4K",
-                desc3: "تلفزيونات ذكية بمقاسات مختلفة (43, 55, 65 بوصة) مع دقة صورة عالية.",
-                badge4: "أجهزة منزلية",
-                title4: "أجهزة ومستلزمات منزلية",
-                desc4: "تشكيلة واسعة من الأجهزة الكهربائية والمنزلية الضرورية لراحة بيتك.",
-                btnText: "اطلب عبر واتساب"
-            },
-            en: {
-                langBtn: "عربي",
-                heroTitle: "Latest Electronics & Home Appliances",
-                heroDesc: "Providing Starlink satellite kits, Smart TVs, and home appliances with top quality and best prices.",
-                sectionTitle: "Featured Products",
-                badge1: "Portable Satellite Internet",
-                desc1: "Compact and high-speed satellite internet, ideal for travel and remote areas.",
-                badge2: "High-Speed Satellite Internet",
-                desc2: "The latest 3rd Gen edition built for extreme internet speeds for homes and offices.",
-                badge3: "TV Screens",
-                title3: "4K Smart TVs",
-                desc3: "Smart televisions in various sizes (43, 55, 65 inches) with high display resolution.",
-                badge4: "Appliances",
-                title4: "Home Electronics & Appliances",
-                desc4: "Wide collection of daily essential electrical and home appliances.",
-                btnText: "Order via WhatsApp"
-            }
-        };
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            document.documentElement.lang = currentLang;
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-            const t = translations[currentLang];
-            
-            document.getElementById('langToggle').innerText = t.langBtn;
-            document.getElementById('heroTitle').innerText = t.heroTitle;
-            document.getElementById('heroDesc').innerText = t.heroDesc;
-            document.getElementById('sectionTitle').innerText = t.sectionTitle;
-            
-            document.getElementById('badge1').innerText = t.badge1;
-            document.getElementById('desc1').innerText = t.desc1;
-            document.getElementById('badge2').innerText = t.badge2;
-            document.getElementById('desc2').innerText = t.desc2;
-            
-            document.getElementById('badge3').innerText = t.badge3;
-            document.getElementById('title3').innerText = t.title3;
-            document.getElementById('desc3').innerText = t.desc3;
-
-            document.getElementById('badge4').innerText = t.badge4;
-            document.getElementById('title4').innerText = t.title4;
-            document.getElementById('desc4').innerText = t.desc4;
-
-            for(let i=1; i<=4; i++) {
-                document.getElementById('btn' + i).innerText = t.btnText;
-            }
-        }
-    </script>
-
-   <!-- Footer Section - 7Heaven Business -->
-<footer style="background-color: #111827; color: #ffffff; padding: 40px 20px; text-align: center; font-family: sans-serif; border-top: 1px solid #1f2937; margin-top: 50px;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        
-        <h3 style="margin-bottom: 10px; font-size: 20px; color: #f9fafb;">تابعنا على وسائل التواصل الاجتماعي / Follow Us</h3>
-        <p style="color: #9ca3af; font-size: 14px; margin-bottom: 25px;">ابقَ على اطلاع بأحدث أجهزة Starlink، الشاشات الذكية، والعروض المنزلية</p>
-        
-        <!-- Social Media Icons & Links -->
-        <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
-            
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@07zolnas" target="_blank" rel="noopener noreferrer" style="color: #ffffff; background-color: #000000; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; border: 1px solid #333; display: inline-flex; align-items: center; gap: 8px;">
-                🎵 TikTok
-            </a>
-
-            <!-- YouTube -->
-            <a href="https://youtube.com/@userjuba" target="_blank" rel="noopener noreferrer" style="color: #ffffff; background-color: #FF0000; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
-                ▶ YouTube
-            </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/share/r/1EzFBVKirN/" target="_blank" rel="noopener noreferrer" style="color: #ffffff; background-color: #1877F2; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
-                👍 Facebook
-            </a>
-
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid #374151; margin: 20px auto; max-width: 800px;">
-        
-        <!-- Copyright -->
-        <p style="font-size: 13px; color: #6b7280; margin: 0;">
-            © 2026 7Heaven Business. جميع الحقوق محفوظة / All rights reserved.
-        </p>
-
-    </div>
-</footer> 
 </body>
 </html>
