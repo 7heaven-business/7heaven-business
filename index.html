@@ -36,9 +36,27 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--accent-color); display: flex; align-items: center; gap: 10px; }
-        nav a { color: #f1f5f9; text-decoration: none; margin-right: 1.5rem; font-weight: 600; transition: color 0.3s; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--accent-color); display: flex; align-items: center; gap: 8px; }
+        .nav-controls { display: flex; align-items: center; gap: 1rem; }
+        nav a { color: #f1f5f9; text-decoration: none; font-weight: 600; transition: color 0.3s; }
         nav a:hover { color: var(--accent-color); }
+
+        /* Lang Switch Button */
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent-color);
+            color: #fff;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        .lang-btn:hover { background: var(--accent-color); color: var(--secondary-color); }
 
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -47,8 +65,8 @@
             text-align: center;
         }
 
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; }
-        .hero p { font-size: 1.25rem; color: #94a3b8; max-width: 700px; margin: 0 auto 2rem; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.15rem; color: #94a3b8; max-width: 700px; margin: 0 auto 2rem; }
 
         .btn-cta {
             display: inline-block;
@@ -67,12 +85,12 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
         .section-title { text-align: center; margin-bottom: 3rem; }
-        .section-title h2 { font-size: 2.2rem; color: var(--secondary-color); margin-bottom: 0.5rem; }
-        .section-title p { color: var(--text-muted); font-size: 1.1rem; }
+        .section-title h2 { font-size: 2rem; color: var(--secondary-color); margin-bottom: 0.5rem; }
+        .section-title p { color: var(--text-muted); font-size: 1.05rem; }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -106,7 +124,7 @@
 
         .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
         .product-tag { align-self: flex-start; background: #e0f2fe; color: #0284c7; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem; }
-        .product-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--secondary-color); }
+        .product-info h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--secondary-color); }
         .product-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
         .btn-order {
@@ -123,30 +141,29 @@
 
         .btn-order:hover { background-color: var(--primary-color); }
 
-        footer { background-color: var(--secondary-color); color: #94a3b8; padding: 3rem 2rem 1.5rem; text-align: center; margin-top: 5rem; }
+        footer { background-color: var(--secondary-color); color: #94a3b8; padding: 2.5rem 2rem; text-align: center; margin-top: 5rem; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo"><i class="fa-solid fa-network-wired"></i> 7heaven Business</div>
-        <nav>
-            <a href="#products">المنتجات</a>
-            <a href="#contact">تواصل معنا</a>
-        </nav>
+        <div class="nav-controls">
+            <button class="lang-btn" onclick="toggleLanguage()"><i class="fa-solid fa-globe"></i> <span id="lang-label">English</span></button>
+        </div>
     </header>
 
     <section class="hero">
-        <h1>حلول الشبكات والإنترنت الفضائي المتقدمة</h1>
-        <p>نوفر أحدث أجهزة Starlink و Ruijie Reyee و MikroTik لضمان اتصال سريع واستقرار تام لمشروعك.</p>
-        <a href="https://wa.me/" class="btn-cta"><i class="fa-brands fa-whatsapp"></i> اطلب استشارتك الآن</a>
+        <h1 id="hero-title">حلول الشبكات والإنترنت الفضائي المتقدمة</h1>
+        <p id="hero-desc">نوفر أحدث أجهزة Starlink و Ruijie Reyee و MikroTik لضمان اتصال سريع واستقرار تام لمشروعك.</p>
+        <a href="https://wa.me/" class="btn-cta" id="hero-btn"><i class="fa-brands fa-whatsapp"></i> اطلب استشارتك الآن</a>
     </section>
 
     <div class="container">
         <section id="products">
             <div class="section-title">
-                <h2>منتجاتنا المعتمدة</h2>
-                <p>معدات وأجهزة عالية الكفاءة لتغطية كافة احتياجات الشبكات</p>
+                <h2 id="sec-title">منتجاتنا المعتمدة</h2>
+                <p id="sec-desc">معدات وأجهزة عالية الكفاءة لتغطية كافة احتياجات الشبكات</p>
             </div>
 
             <div class="products-grid">
@@ -157,10 +174,10 @@
                         <img src="starlink-standard-g3.jpg" alt="Starlink Standard Gen 3">
                     </div>
                     <div class="product-info">
-                        <span class="product-tag">إنترنت فضائي</span>
-                        <h3>أجهزة Starlink Standard Gen 3</h3>
-                        <p>إنترنت فضائي عالي السرعة وتغطية شاملة في أصعب المناطق والمواقع النائية.</p>
-                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                        <span class="product-tag" id="tag-1">إنترنت فضائي</span>
+                        <h3 id="p1-title">أجهزة Starlink Standard Gen 3</h3>
+                        <p id="p1-desc">إنترنت فضائي عالي السرعة وتغطية شاملة في أصعب المناطق والمواقع النائية.</p>
+                        <a href="https://wa.me/" class="btn-order order-btn">طلب المنتج</a>
                     </div>
                 </div>
 
@@ -170,10 +187,10 @@
                         <img src="ruijie-wifi6.jpg" alt="Ruijie Reyee WiFi 6">
                     </div>
                     <div class="product-info">
-                        <span class="product-tag">WiFi 6</span>
-                        <h3>نقاط بث Ruijie Reyee WiFi 6</h3>
-                        <p>تغطية لاسلكية فائقة السرعة مع دعم كثافة عالية من المستخدمين دون انقطاع.</p>
-                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                        <span class="product-tag" id="tag-2">WiFi 6</span>
+                        <h3 id="p2-title">نقاط بث Ruijie Reyee WiFi 6</h3>
+                        <p id="p2-desc">تغطية لاسلكية فائقة السرعة مع دعم كثافة عالية من المستخدمين دون انقطاع.</p>
+                        <a href="https://wa.me/" class="btn-order order-btn">طلب المنتج</a>
                     </div>
                 </div>
 
@@ -183,10 +200,10 @@
                         <img src="mikrotik-hEX-b951.jpg" alt="MikroTik Router">
                     </div>
                     <div class="product-info">
-                        <span class="product-tag">إدارة الشبكات</span>
-                        <h3>راوترات وتوزيع MikroTik</h3>
-                        <p>حلول احترافية لإدارة السرعات، التحكم بالشبكة، وتوزيع الإنترنت بكفاءة عالية.</p>
-                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                        <span class="product-tag" id="tag-3">إدارة الشبكات</span>
+                        <h3 id="p3-title">راوترات وتوزيع MikroTik</h3>
+                        <p id="p3-desc">حلول احترافية لإدارة السرعات، التحكم بالشبكة، وتوزيع الإنترنت بكفاءة عالية.</p>
+                        <a href="https://wa.me/" class="btn-order order-btn">طلب المنتج</a>
                     </div>
                 </div>
 
@@ -196,36 +213,36 @@
                         <img src="ruijie-switch.jpg" alt="Ruijie Reyee PoE Switch">
                     </div>
                     <div class="product-info">
-                        <span class="product-tag">مفاتيح شبكة PoE</span>
-                        <h3>سويتشات Ruijie Reyee PoE</h3>
-                        <p>تغذية الأجهزة بكابل واحد مع نقل بيانات عالي السرعة واستقرار ممتاز.</p>
-                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                        <span class="product-tag" id="tag-4">مفاتيح شبكة PoE</span>
+                        <h3 id="p4-title">سويتشات Ruijie Reyee PoE</h3>
+                        <p id="p4-desc">تغذية الأجهزة بكابل واحد مع نقل بيانات عالي السرعة واستقرار ممتاز.</p>
+                        <a href="https://wa.me/" class="btn-order order-btn">طلب المنتج</a>
                     </div>
                 </div>
 
-                <!-- Point to Point / Full System -->
+                <!-- Full System -->
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="full-system-all-in-one.jpg" alt="Full System All In One">
                     </div>
                     <div class="product-info">
-                        <span class="product-tag">أنظمة متكاملة</span>
-                        <h3>منظومات الربط والشبكات الشاملة</h3>
-                        <p>ربط المواقع وإعداد البنية التحتية بالكامل بجميع الملحقات والمعدات.</p>
-                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                        <span class="product-tag" id="tag-5">أنظمة متكاملة</span>
+                        <h3 id="p5-title">منظومات الربط والشبكات الشاملة</h3>
+                        <p id="p5-desc">ربط المواقع وإعداد البنية التحتية بالكامل بجميع الملحقات والمعدات.</p>
+                        <a href="https://wa.me/" class="btn-order order-btn">طلب المنتج</a>
                     </div>
                 </div>
 
-                <!-- Wavlink Outdoor Router -->
+                <!-- Wavlink Outdoor -->
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="wavlink-outdoor.jpg" alt="Wavlink Outdoor Router">
                     </div>
                     <div class="product-info">
-                        <span class="product-tag">أجهزة خارجية</span>
-                        <h3>راوترات Wavlink الخارجية 4G/WiFi</h3>
-                        <p>مقاومة للظروف الجوية الصعبة لتوفير تغطية خارجية ممتازة للمواقع المفتوحة.</p>
-                        <a href="https://wa.me/" class="btn-order">طلب المنتج</a>
+                        <span class="product-tag" id="tag-6">أجهزة خارجية</span>
+                        <h3 id="p6-title">راوترات Wavlink الخارجية 4G/WiFi</h3>
+                        <p id="p6-desc">مقاومة للظروف الجوية الصعبة لتوفير تغطية خارجية ممتازة للمواقع المفتوحة.</p>
+                        <a href="https://wa.me/" class="btn-order order-btn">طلب المنتج</a>
                     </div>
                 </div>
 
@@ -234,8 +251,92 @@
     </div>
 
     <footer id="contact">
-        <p>&copy; 2026 7heaven Business. جميع الحقوق محفوظة.</p>
+        <p id="footer-text">&copy; 2026 7heaven Business. جميع الحقوق محفوظة.</p>
     </footer>
 
+    <!-- JavaScript for Language Switch -->
+    <script>
+        let currentLang = 'ar';
+
+        const translations = {
+            ar: {
+                dir: 'rtl',
+                langLabel: 'English',
+                heroTitle: 'حلول الشبكات والإنترنت الفضائي المتقدمة',
+                heroDesc: 'نوفر أحدث أجهزة Starlink و Ruijie Reyee و MikroTik لضمان اتصال سريع واستقرار تام لمشروعك.',
+                heroBtn: '<i class="fa-brands fa-whatsapp"></i> اطلب استشارتك الآن',
+                secTitle: 'منتجاتنا المعتمدة',
+                secDesc: 'معدات وأجهزة عالية الكفاءة لتغطية كافة احتياجات الشبكات',
+                tag1: 'إنترنت فضائي', p1Title: 'أجهزة Starlink Standard Gen 3', p1Desc: 'إنترنت فضائي عالي السرعة وتغطية شاملة في أصعب المناطق والمواقع النائية.',
+                tag2: 'WiFi 6', p2Title: 'نقاط بث Ruijie Reyee WiFi 6', p2Desc: 'تغطية لاسلكية فائقة السرعة مع دعم كثافة عالية من المستخدمين دون انقطاع.',
+                tag3: 'إدارة الشبكات', p3Title: 'راوترات وتوزيع MikroTik', p3Desc: 'حلول احترافية لإدارة السرعات، التحكم بالشبكة، وتوزيع الإنترنت بكفاءة عالية.',
+                tag4: 'مفاتيح شبكة PoE', p4Title: 'سويتشات Ruijie Reyee PoE', p4Desc: 'تغذية الأجهزة بكابل واحد مع نقل بيانات عالي السرعة واستقرار ممتاز.',
+                tag5: 'أنظمة متكاملة', p5Title: 'منظومات الربط والشبكات الشاملة', p5Desc: 'ربط المواقع وإعداد البنية التحتية بالكامل بجميع الملحقات والمعدات.',
+                tag6: 'أجهزة خارجية', p6Title: 'راوترات Wavlink الخارجية 4G/WiFi', p6Desc: 'مقاومة للظروف الجوية الصعبة لتوفير تغطية خارجية ممتازة للمواقع المفتوحة.',
+                orderBtn: 'طلب المنتج',
+                footer: '&copy; 2026 7heaven Business. جميع الحقوق محفوظة.'
+            },
+            en: {
+                dir: 'ltr',
+                langLabel: 'عربي',
+                heroTitle: 'Advanced Networking & Satellite Internet Solutions',
+                heroDesc: 'We provide top-tier Starlink, Ruijie Reyee, and MikroTik equipment to ensure fast and reliable connectivity for your business.',
+                heroBtn: '<i class="fa-brands fa-whatsapp"></i> Get Free Consultation',
+                secTitle: 'Certified Products',
+                secDesc: 'High-performance hardware covering all enterprise networking needs',
+                tag1: 'Satellite Internet', p1Title: 'Starlink Standard Gen 3', p1Desc: 'High-speed satellite internet providing full coverage in remote and harsh environments.',
+                tag2: 'WiFi 6', p2Title: 'Ruijie Reyee WiFi 6 Access Points', p2Desc: 'Ultra-fast wireless coverage designed for high-density user connections.',
+                tag3: 'Network Management', p3Title: 'MikroTik Routers & Controllers', p3Desc: 'Enterprise bandwidth management, routing, and access control solutions.',
+                tag4: 'PoE Switches', p4Title: 'Ruijie Reyee PoE Switches', p4Desc: 'Single-cable power and high-speed data transmission for seamless stability.',
+                tag5: 'All-in-One Systems', p5Title: 'Complete Network Infrastructure', p5Desc: 'Full site-to-site connectivity setups and turn-key networking infrastructure.',
+                tag6: 'Outdoor Gear', p6Title: 'Wavlink Outdoor 4G/WiFi Routers', p6Desc: 'Weatherproof outdoor routers providing long-range coverage in open areas.',
+                orderBtn: 'Order Product',
+                footer: '&copy; 2026 7heaven Business. All rights reserved.'
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const data = translations[currentLang];
+
+            document.documentElement.dir = data.dir;
+            document.documentElement.lang = currentLang;
+
+            document.getElementById('lang-label').innerText = data.langLabel;
+            document.getElementById('hero-title').innerText = data.heroTitle;
+            document.getElementById('hero-desc').innerText = data.heroDesc;
+            document.getElementById('hero-btn').innerHTML = data.heroBtn;
+            document.getElementById('sec-title').innerText = data.secTitle;
+            document.getElementById('sec-desc').innerText = data.secDesc;
+
+            document.getElementById('tag-1').innerText = data.tag1;
+            document.getElementById('p1-title').innerText = data.p1Title;
+            document.getElementById('p1-desc').innerText = data.p1Desc;
+
+            document.getElementById('tag-2').innerText = data.tag2;
+            document.getElementById('p2-title').innerText = data.p2Title;
+            document.getElementById('p2-desc').innerText = data.p2Desc;
+
+            document.getElementById('tag-3').innerText = data.tag3;
+            document.getElementById('p3-title').innerText = data.p3Title;
+            document.getElementById('p3-desc').innerText = data.p3Desc;
+
+            document.getElementById('tag-4').innerText = data.tag4;
+            document.getElementById('p4-title').innerText = data.p4Title;
+            document.getElementById('p4-desc').innerText = data.p4Desc;
+
+            document.getElementById('tag-5').innerText = data.tag5;
+            document.getElementById('p5-title').innerText = data.p5Title;
+            document.getElementById('p5-desc').innerText = data.p5Desc;
+
+            document.getElementById('tag-6').innerText = data.tag6;
+            document.getElementById('p6-title').innerText = data.p6Title;
+            document.getElementById('p6-desc').innerText = data.p6Desc;
+
+            document.querySelectorAll('.order-btn').forEach(btn => btn.innerText = data.orderBtn);
+            document.getElementById('footer-text').innerHTML = data.footer;
+        }
+    </script>
 </body>
 </html>
+
